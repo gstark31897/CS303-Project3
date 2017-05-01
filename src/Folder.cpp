@@ -37,10 +37,38 @@ void Folder::add_folder(string path, string folder_name)
     for(int j = 0; j < pCount; j++)
     {
         int position = pArray[i].find('/');
-        pArray[i+1] = substr(0, position);
+        pArray[i+1] = substr(position, pArray[i].size());
     }
     
     //insert into tree
-    Folder_Tree.insert(Folder_tree->local_root, pArray[pCount-1]);
+    Folder_Tree.insert(pArray[pCount-1]);
 }
+
+void Folder::delete_folder(string path, string folder_name)
+{
+        int pCount = 0; 
     
+    for(int i = 0; i < path.size(); i++)
+    {
+        if(path[i] == '/')
+        {
+            pCount++;
+        }
+    }
+    
+    pCount += 1;
+    string pArray[pCount]; 
+    pArray[0] = path; 
+    
+    for(int j = 0; j < pCount; j++)
+    {
+        int position = pArray[i].find('/');
+        pArray[i+1] = substr(position, pArray[i].size());
+    }
+    
+    //delete folder
+    Folder_Tree.erase(pArray[pCount - 1]); 
+}
+
+
+
