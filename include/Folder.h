@@ -20,6 +20,12 @@ public:
     Folder();
     Folder(std::string folder_name, int folder_size);
     
+    //getters/setters
+    void setSize(int size);
+    void setName(std::string name);
+    int getSize();
+    std::string getName();
+    
     void add_folder(std::string path, std::string folder_name);
     void delete_folder(std::string path, std::string folder_name);
 };
