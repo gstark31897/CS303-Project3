@@ -1,12 +1,11 @@
 #ifndef H_FOLDER
 #define H_FOLDER
 
-#include "File.h"
+#include "file.h"
 #include "AVL_Tree.h"
 #include "fileobject.h"
 #include <iostream>
 #include <string>
-#include <list>
 
 class Folder : public FileObject
 {
