@@ -36,29 +36,11 @@ int file::getSize()
 
 void file::add_file(sring path, string file_name, int size)
 {
-    file *addFile = new File(path, file_name, size);
-    int pCount = 0; 
+    File *addFile = new File(path, file_name, size);
     
-    for(int i = 0; i < path.size(); i++)
-    {
-        if(path[i] == '/')
-        {
-            pCount++;
-        }
-    }
-    
-    pCount += 1;
-    string pArray[pCount]; 
-    pArray[0] = path; 
-    
-    for(int j = 0; j < pCount; j++)
-    {
-        int position = pArray[i].find('/');
-        pArray[i+1] = substr(position, pArray[i].size());
-    }
-        
+    string destination = File.parse_path(path);
     //find parent node    
-    folder *add_folder = Folder_Tree.find(pArray[pCount - 1]);
+    folder *add_folder = Folder_Tree.find(destination);
     //insert new file into tree
     Folder_Tree.insert(add_folder, addFile);
     
@@ -75,29 +57,11 @@ list<File> get_files(string path, string file_name)
 
 void file::delete_file(std::string path, std::string file_name)
 {
-    int pCount = 0; 
-    
-    for(int i = 0; i < path.size(); i++)
-    {
-        if(path[i] == '/')
-        {
-            pCount++;
-        }
-    }
-    
-    pCount += 1;
-    string pArray[pCount]; 
-    pArray[0] = path; 
-    
-    for(int j = 0; j < pCount; j++)
-    {
-        int position = pArray[i].find('/');
-        pArray[i+1] = substr(position, pArray[i].size());
-    }
+    string destination = File.parse_path(path);
     
     //store file in pointer to be used
-    folder *parentFolder = Folder_Tree.find(pArray[pCount - 1])
-    file *deletedFile = Folder_Tree.find(file_name);
+    Folder *parentFolder = Folder_Tree.find(destination)
+    File *deletedFile = Folder_Tree.find(file_name);
     
     //adjust size of parent folder before deleting 
     parentFolder->setSize(parentFolder->getSize() - deletedFile->getSize());
