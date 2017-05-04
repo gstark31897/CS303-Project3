@@ -13,16 +13,18 @@ public:
     FileObject(std::string name): m_name(name) {};
 
     void setName(std::string name) { m_name = name; };
-    std::string getName() { return m_name; };
+    std::string getName() const { return m_name; };
 
-    bool operator<(FileObject &other) { return m_name < other.getName(); };
-    bool operator>(FileObject &other) { return m_name > other.getName(); };
+    bool operator<(FileObject &other) const { return m_name < other.getName(); };
+    bool operator<(const FileObject &other) const { return m_name < other.getName(); };
+    bool operator>(FileObject &other) const { return m_name > other.getName(); };
+    bool operator>(const FileObject &other) const { return m_name > other.getName(); };
     
     std::string parse_path(std::string path)
     {
-        int pCount = 0; 
+/*        size_t pCount = 0; 
     
-        for(int i = 0; i < path.size(); i++)
+        for(size_t i = 0; i < path.size(); i++)
         {
             if(path[i] == '/')
             {
@@ -34,13 +36,13 @@ public:
         std::string pArray[pCount]; 
         pArray[0] = path; 
     
-        for(int j = 0; j < pCount; j++)
+        for(size_t j = 0; j < pCount; j++)
         {
-            int position = pArray[j].find('/');
+            size_t position = pArray[j].find('/');
             pArray[j+1] = substr(position, pArray[j].size());
         }
         
-        return pArray[pCount - 1]; 
+        return pArray[pCount - 1]; */
     }
 };
 

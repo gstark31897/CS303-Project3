@@ -8,6 +8,8 @@ O=build
 
 OBJS= \
     $(O)/main.o \
+    $(O)/folder.o \
+    $(O)/file.o \
 
 all: $(O)/project
 
