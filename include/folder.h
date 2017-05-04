@@ -11,10 +11,11 @@ class Folder : public FileObject
 {
 private:
     int m_size;
-    AVL_Tree<Folder> m_folderTree; 
+    AVL_Tree<Folder*> m_folderTree; 
     AVL_Tree<File> m_fileTree;
     
 public:
+    Folder(): FileObject("") {};
     Folder(std::string name, int size): FileObject(name) {};
     
     //getters/setters

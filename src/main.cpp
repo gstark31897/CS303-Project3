@@ -1,13 +1,18 @@
 #include "folder.h"
 #include <iostream>
 
+using namespace std;
+
 
 int main()
 {
     Folder *folder = new Folder("root", 0);
-    folder->add_folder("/root", "folder2");
+    cout << "Making root/folder2" << endl;
+    folder->add_folder("root", "folder2");
+    cout << "Making root/folder2/folder3" << endl;
+    folder->add_folder("root/folder2", "folder3");
 
-    std::cout << folder << std::endl;
+    std::cout << *folder << std::endl;
 
     return 0;
 }

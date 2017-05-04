@@ -1,6 +1,6 @@
 CXX=  g++
 
-CFLAGS=-g -Wall -Iinclude/ -std=c++11
+CFLAGS=-g -Iinclude/ -std=c++11
 LDFLAGS=
 LIBS=-lpthread
 
