@@ -3,6 +3,7 @@
 
 #include <string>
 #include <iostream>
+#include <algorithm>
 
 
 class FileObject
@@ -47,30 +48,13 @@ public:
         return front;
     };
 
-    /*std::string parse_path(std::string path)
+    size_t path_length(std::string &path)
     {
-        size_t pCount = 0; 
-    
-        for(size_t i = 0; i < path.size(); i++)
-        {
-            if(path[i] == '/')
-            {
-                pCount++;
-            }
-        }
-    
-        pCount += 1;
-        std::string pArray[pCount]; 
-        pArray[0] = path; 
-    
-        for(size_t j = 0; j < pCount; j++)
-        {
-            size_t position = pArray[j].find('/');
-            pArray[j+1] = path.substr(position, pArray[j].size());
-        }
-        
-        return pArray[pCount - 1];
-    }*/
+        size_t n = std::count(path.begin(), path.end(), '/');
+        if (path.find('/') == 0)
+            --n;
+        return n;
+    }
 };
 
 #endif

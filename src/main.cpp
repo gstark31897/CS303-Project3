@@ -12,6 +12,8 @@ int main()
     cout << "Making root/folder2/folder3" << endl;
     folder->add_folder("root/folder2", "folder3");
 
+    folder->delete_folder("root/folder2", "folder3");
+
     std::cout << *folder << std::endl;
 
     return 0;
