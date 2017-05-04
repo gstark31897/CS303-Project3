@@ -10,23 +10,26 @@
 class Folder : public FileObject
 {
 private:
-    std::string m_folder_name;
-    int m_folder_size;
+    int m_size;
     AVL_Tree<Folder> Folder_tree; 
     AVL_Tree<File> File_Tree;
     
 public:
-    Folder();
     Folder(std::string folder_name, int folder_size);
     
     //getters/setters
-    void setSize(int size);
-    void setName(std::string name);
-    int getSize();
-    std::string getName();
+    void setSize(int size) { m_size = size; };
+    int getSize() { return m_size; };
     
     void add_folder(std::string path, std::string folder_name);
     void delete_folder(std::string path, std::string folder_name);
+
+    void add_file(std::string path, std::string file_name, int size) {};
+    File get_file(std::string path, std::string file_name) {};
+    std::list<File> get_files(std::string path, std::string file_name) {};
+    void delete_file(std::string path, std::string file_name) {};
+
+    friend std::ostream operator<<(std::ostream &out, const Folder &folder);
 };
 
 #endif

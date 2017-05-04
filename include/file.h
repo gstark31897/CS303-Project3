@@ -4,6 +4,9 @@
 #include "AVL_Tree.h"
 #include "AVL_Node.h"
 
+#include <list>
+
+
 class File
 {
 private:
@@ -13,13 +16,12 @@ private:
 public:
     File();
     File(std::string name, int size);
-    
-    void add_file(std::string path, std::string file_name, int size);
-    File get_file(std::string path, std::string file_name);
-    list<File> get_files(std::string path, std::string file_name);
-    void delete_file(std::string path, std::string file_name);
+
+    void setSize(int size) { m_size = size; };
+    int getSize() { return m_size; };
+
+    friend std::ostream operator<<(std::ostream &out, const File &file);
 };
 
 #endif
 
-    
