@@ -38,10 +38,12 @@ Folder* Folder::get_folder(string path, size_t depth)
     }
 }
 
+
 File* Folder::get_file(string path, string file_name)
 {
-    return get_folder(path, 0)->m_fileTree.find(file_name);
+    return get_folder(path, 0)->m_fileTree.find(new File(file_name, 0));
 }
+
 
 void Folder::delete_folder(string path, string name)
 {
@@ -56,14 +58,37 @@ std::ostream& operator<<(std::ostream &out, const Folder &folder)
     return out << folder.getName();
 }
 
+
 void Folder::add_file(string path, string file_name, int size)
 {
-    get_folder(path, 0)->m_fileTree.insert(new File(file_name, size);
+    get_folder(path, 0)->m_fileTree.insert(new File(file_name, size));
 }
+
+
+std::list<File*> Folder::get_files(std::string path, std::string file_name)
+{
+    Folder *folder = get_folder(path, 0);
+    list<File*> file_list;
+    folder->get_files_inside(file_name, folder->m_fileTree, file_list);
+    return file_list;
+}
+
+
+void Folder::get_files_inside(std::string file_name, AVL_Tree<File*> tree, std::list<File*> &file_list)
+{
+    if (tree.is_null())
+        return;
+    if (tree.get_data()->getName().find(file_name) == 0)
+        file_list.push_back(tree.get_data());
+    get_files_inside(file_name, tree.get_left_subtree(), file_list);
+    get_files_inside(file_name, tree.get_right_subtree(), file_list);
+}
+
 
 void Folder::delete_file(string path, string file_name)
 {
-    File *fTemp = get_folder(path, 1);
+    Folder *temp = get_folder(path, 0);
     string front = path_pop(path);
     temp->m_fileTree.erase(new File(front, 0));
 }
+
