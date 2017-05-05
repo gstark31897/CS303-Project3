@@ -12,14 +12,9 @@
 class File: public FileObject
 {
 private:
-    std::string m_name;
-    int m_size;
     
 public:
-    File(std::string name, int size): FileObject(name) { m_size = size; };
-
-    void setSize(int size) { m_size = size; };
-    int getSize() { return m_size; };
+    File(std::string name, int size): FileObject(name, size) {};
 
     friend std::ostream& operator<<(std::ostream &out, const File &file);
 };
