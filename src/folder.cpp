@@ -38,6 +38,10 @@ Folder* Folder::get_folder(string path, size_t depth)
     }
 }
 
+File* Folder::get_file(string path, string file_name)
+{
+    return get_folder(path, 0)->m_fileTree.find(file_name);
+}
 
 void Folder::delete_folder(string path, string name)
 {
@@ -52,3 +56,14 @@ std::ostream& operator<<(std::ostream &out, const Folder &folder)
     return out << folder.getName();
 }
 
+void Folder::add_file(string path, string file_name, int size)
+{
+    get_folder(path, 0)->m_fileTree.insert(new File(file_name, size);
+}
+
+void Folder::delete_file(string path, string file_name)
+{
+    File *fTemp = get_folder(path, 1);
+    string front = path_pop(path);
+    temp->m_fileTree.erase(new File(front, 0));
+}

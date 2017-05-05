@@ -23,11 +23,11 @@ public:
     int getSize() { return m_size; };
     
     void add_folder(std::string path, std::string folder_name);
-    Folder *get_folder(std::string path, size_t depth);
+    Folder* get_folder(std::string path, size_t depth);
     void delete_folder(std::string path, std::string folder_name);
 
     void add_file(std::string path, std::string file_name, int size) {};
-    File get_file(std::string path, std::string file_name) {};
+    File* get_file(std::string path, std::string file_name) {};
     std::list<File> get_files(std::string path, std::string file_name) {};
     void delete_file(std::string path, std::string file_name) {};
 
